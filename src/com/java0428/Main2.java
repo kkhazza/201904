@@ -2,9 +2,11 @@ package com.java0428;
 
 public class Main2 {
 
-	public void main(String[] args) {
+	public static void main(String[] args) {
 		문제 quiz = new 문제();
-		quiz.q2();
+		문제2 quiz2 = new 문제2();
+//		quiz.q2();
+		quiz2.q2();
 	}
 
 }

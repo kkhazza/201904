@@ -54,12 +54,12 @@ public class 문제 {
 		while(true) {
 			String input = scan.next();
 			System.out.println(input.toUpperCase());
-					
-			if(aY == 2 && aX == 5) {
+						
+			if(aX == 5 && aY == 2) {
 				맵[5][2] = 1;
 			}
 			if(aX == 3 && aY == 3) {
-				aX = 1; aY = 1;
+				aX = 0; aY = 1;
 			}
 			if(aX == 6 && aY == 5) {
 				break;
