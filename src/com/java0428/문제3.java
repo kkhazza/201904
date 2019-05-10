@@ -2,69 +2,67 @@ package com.java0428;
 
 import java.util.Scanner;
 
-public class 문제 {
+public class 문제3 {
 	
 	int[][] 맵 = {
-			{0,0,0,0,0,0,0},
-			{1,1,1,1,1,1,0},
-			{0,1,0,0,0,1,0},
-			{0,1,0,1,1,0,0},
-			{0,1,0,0,1,0,0},
-			{0,1,0,1,1,1,1},
-			{0,0,0,0,0,0,0}				
-	};
-
+			{ 0, 0, 0, 0, 0, 0 },
+			{ 1, 1, 1, 1, 0, 1 },
+			{ 1, 0, 0, 1, 0, 1 },
+			{ 1, 1, 0, 1, 0, 1 },
+			{ 0, 1, 1, 1, 1, 1 },
+			{ 0, 0, 0, 0, 0, 0 }
+			};
+	
 	public boolean q1(int aX, int aY, int bX, int bY) {
 		boolean result = false; 
 
 		for(int y = 0; y < 맵.length; y++) {		
 			for(int x = 0; x < 맵[y].length; x++) { 				
-				if(aX < 0 || aX > 6 || 맵[aY][aX] == 0) {
+				if(aX < 0 || aX > 5 || 맵[aY][aX] == 0) {
 					aY = bY;
 					aX = bX;
 					result = true;
 				}
 
 				if(y == aY && x == aX) {
-					System.out.print("→ ");
-				} else if(y == 2 && x == 5) {
-					System.out.print("＠ ");
-				} else if(y == 5 && x == 2) {
-					System.out.print("▒ ");
+					System.out.print("㉿ ");
 				} else if(맵[y][x] == 1){
 					System.out.print("□ ");
 				} else {
 					System.out.print("■ ");
 				}
 			}
-
 			System.out.println();
 		}
 			return result;	
 	}
 
+	
+	
 	public void q2() {
 		Scanner scan = new Scanner(System.in);
 		int aX = 0;
-		int aY = 1;
+		int aY = 3;
 		int bX = 0;
-		int bY = 1;
+		int bY = 3;
 		
-		q1(aX, aY, bX, bY); // 시작을 위하여 필요한 호출 부분
+		q1(aX,aY,bX,bY);
 		while(true) {
 			String input = scan.next();
 			System.out.println(input.toUpperCase());
-						
-			if(aX == 5 && aY == 2) {
-				맵[5][2] = 1;
+			
+			if(aX == 1 && aY == 4) {
+				aX = 0;
+				aY = 3;
 			}
-			if(aX == 3 && aY == 3) {
-				aX = 0; aY = 1;
+			if(aX == 3 && aY == 1) {
+				aX = 3; 
+				aY = 3;
 			}
-			if(aX == 6 && aY == 5) {
+			if(aX == 5 && aY == 4) {
 				break;
 			}
-		
+			
 			switch(input.toUpperCase()) {
 			case "W": // 위쪽
 				aY--;
@@ -90,6 +88,7 @@ public class 문제 {
 				bY = aY;
 			}
 		}
+		
 	}
-
+	
 }

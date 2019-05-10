@@ -18,8 +18,15 @@ public class 문제2 {
 		
 		for(int y = 0; y < 맵.length; y++) {
 			for(int x = 0; x < 맵[y].length; x++) {
+				
+				if(aX < 0 || aX > 4 || aY < 0 || aY > 5) {
+					aX = bX;
+					aY = bY;
+					return true;
+				}
+				
 				if (y == aY && x == aX) {
-					System.out.print(" ＠ ");
+					System.out.print(" ㉿ ");
 				} else if (맵[y][x] == 1) {
 					System.out.print(" ■ ");
 				} else {
@@ -38,23 +45,11 @@ public class 문제2 {
 		int bX = 4;
 		int bY = 0;
 		
-		q1(aX, aY, bX, bY);
+		q1(aX, aY, bX, bY); // 시작을 위하여 필요한 호출 부분
 		while(true) {
 			String input = scan.next();
-			String ans = scan.next();
 			System.out.println(input.toUpperCase());
-			
-			if(aX == 2 && aY == 3) {
-				System.out.print("정답을 입력하시오 > ");
-				if(ans.equals("정답")) {
-					System.out.println("명중");
-					break;
-				} else {
-					System.out.print("틀렸습니다");
-				}
-				
-			}
-			
+					
 			switch(input.toUpperCase()) {
 			case "W": // 위쪽
 				aY--;
@@ -78,7 +73,21 @@ public class 문제2 {
 			} else {
 				bX = aX;
 				bY = aY;
-			}			
+			}
+			
+			if(aX == 2 && aY == 3) {
+				String ans = scan.next();
+					while(true) {
+						System.out.print("정답을 입력하세요 > ");
+						if(ans.equals("정답")) {
+							System.out.print("명중");
+							break;
+						} else {
+							System.out.println("틀렸습니다");
+						}					
+					}
+			}
+			
 		}
 	}
 
