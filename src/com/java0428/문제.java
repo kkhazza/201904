@@ -7,10 +7,10 @@ public class 문제 {
 	int[][] 맵 = {
 			{0,0,0,0,0,0,0},
 			{1,1,1,1,1,1,0},
-			{0,1,0,0,0,1,0},
+			{0,1,0,0,0,2,0},
 			{0,1,0,1,1,0,0},
 			{0,1,0,0,1,0,0},
-			{0,1,0,1,1,1,1},
+			{0,1,3,1,1,1,1},
 			{0,0,0,0,0,0,0}				
 	};
 
@@ -19,7 +19,7 @@ public class 문제 {
 
 		for(int y = 0; y < 맵.length; y++) {		
 			for(int x = 0; x < 맵[y].length; x++) { 				
-				if(aX < 0 || aX > 6 || 맵[aY][aX] == 0) {
+				if(aX < 0 || aX > 6 || 맵[aY][aX] == 0 || 맵[aY][aX] == 3) {
 					aY = bY;
 					aX = bX;
 					result = true;
@@ -27,9 +27,9 @@ public class 문제 {
 
 				if(y == aY && x == aX) {
 					System.out.print("→ ");
-				} else if(y == 2 && x == 5) {
+				} else if(맵[y][x] == 2) {
 					System.out.print("＠ ");
-				} else if(y == 5 && x == 2) {
+				} else if(맵[y][x] == 3) {
 					System.out.print("▒ ");
 				} else if(맵[y][x] == 1){
 					System.out.print("□ ");
@@ -56,10 +56,12 @@ public class 문제 {
 			System.out.println(input.toUpperCase());
 						
 			if(aX == 5 && aY == 2) {
+				맵[2][5] = 1;
 				맵[5][2] = 1;
 			}
 			if(aX == 3 && aY == 3) {
 				aX = 0; aY = 1;
+				bX = 0; bY = 1;
 			}
 			if(aX == 6 && aY == 5) {
 				break;

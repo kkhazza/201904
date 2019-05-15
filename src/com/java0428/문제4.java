@@ -3,118 +3,90 @@ package com.java0428;
 import java.util.Scanner;
 
 public class 문제4 {
-private int Map[][] = {
-{1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-{1, 0, 2, 0, 0, 0, 4, 4, 4, 1},
-{1, 0, 2, 0, 3, 0, 0, 0, 4, 1},
-{1, 0, 2, 0, 3, 0, 5, 0, 0, 1},
-{1, 0, 2, 0, 3, 0, 5, 0, 0, 1},
-{1, 0, 2, 0, 3, 0, 5, 0, 0, 1},
-{1, 0, 2, 0, 3, 0, 5, 0, 0, 1},
-{1, 0, 2, 0, 3, 0, 5, 5, 0, 1},
-{1, 0, 0, 0, 3, 0, 0, 0, 0, 1},
-{1, 1, 1, 1, 1, 1, 1, 1, 0, 1}
-};
+	int[][] 맵 = {
+			{0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+			{0, 1, 2, 1, 1, 1, 4, 4, 4, 0},
+			{0, 1, 2, 1, 3, 1, 1, 1, 4, 0},
+			{0, 1, 2, 1, 3, 1, 5, 1, 1, 0},
+			{0, 1, 2, 1, 3, 1, 5, 1, 1, 0},
+			{0, 1, 2, 1, 3, 1, 5, 1, 1, 0},
+			{0, 1, 2, 1, 3, 1, 5, 1, 1, 0},
+			{0, 1, 2, 1, 3, 1, 5, 5, 1, 0},
+			{0, 1, 1, 1, 3, 1, 1, 1, 1, 0},
+			{0, 0, 0, 0, 0, 0, 0, 0, 1, 0}
+	};
 
-public void q1(int t_x, int t_y)
-{
-for(int y = 0; y < Map.length; y++)
-{
-for(int x = 0; x < Map[y].length; x++)
-{
-if(t_x == x && t_y == y)
-{
-System.out.print("P");
+	public boolean q1(int aX, int aY, int bX, int bY) {
+		boolean result = false;
+		for(int y = 0; y < 맵.length; y++) {
+			for(int x = 0; x < 맵[y].length; x++) {
+				if(맵[aY][aX] ==  0 || 맵[aY][aX] ==  2 || 맵[aY][aX] ==  3 || 맵[aY][aX] ==  4 || 맵[aY][aX] ==  5) {
+					aX = bX;
+					aY = bY;
+					result = true;
+				}
+				
+				if(y == aY && x == aX) {
+					System.out.print(" ㉿ ");
+				} else if(맵[y][x] == 2) {
+					System.out.print("＠");
+				} else if(맵[y][x] == 3) {
+					System.out.print(" ♥ ");
+				} else if(맵[y][x] == 4) {
+					System.out.print(" ▒ ");
+				} else if(맵[y][x] == 5) {
+					System.out.print(" ▼ ");
+				} else if(맵[y][x] == 1) {
+					System.out.print(" □ ");
+				} else {
+					System.out.print(" ■ ");
+				} 
+			}
+			System.out.println();
+		}
+		return result;
+	}
+	
+	public void q2() {
+		Scanner scan = new Scanner(System.in);
+		int aX = 1;
+		int aY = 1;
+		int bX = 1;
+		int bY = 1;
+		q1(aX, aY, bX, bY);
+		
+		while(true) {
+			String input = scan.next();
+			System.out.print(input.toUpperCase());
+			
+			switch(input.toUpperCase()) {
+			case "W":
+				aY--;
+				break;
+			case "S":
+				aY++;
+				break;
+			case "A":
+				aX--;
+				break;
+			case "D":
+				aX++;
+				break;
+			default:
+				break;
+			}
+			
+			if(q1(aX, aY, bX, bY)) {
+				aX = bX;
+				aY = bY;
+			}else {
+				bX = aX;
+				bY = aY;
+			}
+			
+			if(aY == 9 && aX == 8) {
+				break;
+			}
+		}
+	}
 }
-else if(Map[y][x] == 1)
-{
-System.out.print("■");
-}
-else if(Map[y][x] == 2)
-{
-System.out.print("＠");
-}
-else if(Map[y][x] == 3)
-{
-System.out.print("♣");
-}
-else if(Map[y][x] == 4)
-{
-System.out.print("●");
-}
-else if(Map[y][x] == 5)
-{
-System.out.print("▲");
-}
-else if(Map[y][x] == 0)
-{
-System.out.print("□");
-}
-}
-System.out.println();
-}
-}
-
-public void q2()
-{
-
-int t_x = 1;
-int t_y = 1;
-int m_x = t_x;
-int m_y = t_y;
-
-q1(t_x, t_y);
-
-Scanner sc = new Scanner(System.in);
-
-while(true)
-{
-switch(sc.next().toUpperCase())
-{
-case "W":
-m_y--;
-break;
-case "D":
-m_x++;
-break;
-case "S":
-m_y++;
-break;
-case "A":
-m_x--;
-break;
-default:
-break;
-}
-
-if(q2(m_x, m_y))
-{
-t_x = m_x;
-t_y = m_y;
-}
-else
-{
-m_x = t_x;
-m_y = t_y;
-}
-
-q1(t_x, t_y);
-
-if(t_x == 8 && t_y == 9)
-{
-System.out.println("끝");
-break;
-}
-}
-}
-
-public boolean q2(int m_x, int m_y)
-{
-if(Map[m_y][m_x] == 0)
-{
-return true;
-}
-return false;
-}
-}
-

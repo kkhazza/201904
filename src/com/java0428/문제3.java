@@ -54,10 +54,14 @@ public class 문제3 {
 			if(aX == 1 && aY == 4) {
 				aX = 0;
 				aY = 3;
+				bX = 0;
+				bY = 3;
 			}
 			if(aX == 3 && aY == 1) {
 				aX = 3; 
 				aY = 3;
+				bX = 3;
+				bY = 3;
 			}
 			if(aX == 5 && aY == 4) {
 				break;

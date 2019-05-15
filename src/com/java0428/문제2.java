@@ -83,7 +83,8 @@ public class 문제2 {
 							System.out.print("명중");
 							break;
 						} else {
-							System.out.println("틀렸습니다");
+							System.out.println("틀렸습니다. 다시 시작하세요");
+							break;
 						}					
 					}
 			}

@@ -67,6 +67,32 @@ public class 문제5 {
 			default:
 				break;
 			}
+					
+			if(aY == 3 && aX == 7) {
+				break;
+			} else if(aY == 2 && aX == 2) {
+				while(true) {
+					System.out.print("머리조심을 입력하세요 > ");
+					String ans = scan.next();
+					if(ans.equals("머리조심")) {
+						break;
+					} else {
+						System.out.print("틀렸습니다");
+					}
+				}
+			} else if(aY == 3 && aX == 3) {
+				while(true) {
+					System.out.print("강사님 이름을 입력하세요 > ");
+					String name = scan.next();
+					if(name.equals("김경빈")) {
+						break;
+					} else {
+						System.out.print("틀렸습니다");
+						aX = 0; aY = 2;
+					}
+				}
+			}
+			
 			System.out.println(aY + ", " + aX + ", " + bY + ", " + bX);			
 			if(q1(aX, aY, bX, bY)) {
 				aX = bX;
@@ -75,9 +101,7 @@ public class 문제5 {
 				bX = aX;
 				bY = aY;
 			}
-		}
-		
-		
+		}		
 	}
 
 }
